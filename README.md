@@ -44,6 +44,13 @@ pipenv install --ignore-pipfile
 
 ```
 
+After installing all the requirements, the Google Sheets API needs to be enabled.
+
+### Google Sheets API
+
+* Follow the Step 1 instructions in: https://developers.google.com/sheets/api/quickstart/python
+* After you create your new Google Sheets Project, download the configuration file and move it to the chatbot's root folder under the name credentials.json
+
 ## Usage example
 
 Hmm basically just talk to it and send him links to cool articles you wanna share with your team. A really cool feature of Telegram bots is that you can make them join group conversations, so the Article Meeseeks can infiltrate different conversations and gather articles from those too.
