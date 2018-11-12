@@ -36,7 +36,9 @@ If you are setting up a development environment I highly recommend you use pipen
 Here we create an environment for the chatbot in python 3 and copy the last version of the development environment from the pipfile.lock
 
 ```sh
-pipenv shell --three
+pipenv --three
+
+pipenv shell
 
 pipenv install --ignore-pipfile
 
