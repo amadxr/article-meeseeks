@@ -53,7 +53,9 @@ After installing all the requirements, the Google Sheets API needs to be enabled
 
 ## Usage example
 
-Hmm basically just talk to it and send him links to cool articles you wanna share with your team. A really cool feature of Telegram bots is that you can make them join group conversations, so the Article Meeseeks can infiltrate different conversations and gather articles from those too.
+When ran for the first time, the browser is opened to authenticate a google account. After the first sign in, the credentials are saved in the token.json file, so it won't prompt the browser again.
+
+After deployment, basically just talk to it and send him links to cool articles you wanna share with your team. A really cool feature of Telegram bots is that you can make them join group conversations, so the Article Meeseeks can infiltrate different conversations and gather articles from those too.
 
 ## Release History
 
