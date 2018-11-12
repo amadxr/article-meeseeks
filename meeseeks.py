@@ -13,9 +13,6 @@ def help(bot, update):
     update.message.reply_text("Send me a link you consider interesting and I will take care of the rest.")
 
 def collect(bot, update):
-    print('new message:')
-    text = update.message.text
-    print(text)
     first_name = update.message.from_user.first_name
     last_name = update.message.from_user.last_name
 
