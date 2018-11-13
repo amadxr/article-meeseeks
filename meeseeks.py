@@ -15,6 +15,7 @@ def help(bot, update):
 def collect(bot, update):
     first_name = update.message.from_user.first_name
     last_name = update.message.from_user.last_name
+    text = update.message.text
 
     if first_name is None:
         full_name = 'Unknown'
@@ -26,6 +27,7 @@ def collect(bot, update):
     key = "https://"
 
     if key in text:
+        print(full_name + '=> ' + text)
         pos = text.find(key)
         ts = time.time()
         st = datetime.datetime.fromtimestamp(ts).strftime('%Y/%m/%d %H:%M:%S')
