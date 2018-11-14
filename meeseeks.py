@@ -7,7 +7,7 @@ from oauth2client import file, client, tools
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 def start(bot, update):
-    update.message.reply_text("I'm Librarian Meeseeks! Share articles with me and I will collect and share them with the rest of the team!")
+    update.message.reply_text("I'm Article Collector Meeseeks! Share articles with me and I will collect and share them with the rest of the team!")
 
 def help(bot, update):
     update.message.reply_text("Send me a link you consider interesting and I will take care of the rest.")
