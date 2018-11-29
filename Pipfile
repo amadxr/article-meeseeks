@@ -8,6 +8,7 @@ google-api-python-client = "*"
 "oauth2client" = "*"
 python-telegram-bot = "*"
 python-dotenv = "*"
+requests = "*"
 
 [dev-packages]
 

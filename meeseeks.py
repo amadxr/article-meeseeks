@@ -1,4 +1,4 @@
-import time, datetime, os
+import time, datetime, os, requests
 from os.path import join, dirname
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
@@ -25,37 +25,45 @@ def collect(bot, update):
         full_name = first_name + ' ' + last_name
 
     key = "https://"
+    unwanted_extensions = ['jpg', 'jpeg', 'png']
 
     if key in text:
-        print(full_name + '=> ' + text)
         pos = text.find(key)
-        ts = time.time()
-        st = datetime.datetime.fromtimestamp(ts).strftime('%Y/%m/%d %H:%M:%S')
+        link = text[pos:].split(' ')[0]
 
-        values = [
-            [
-                st,
-                full_name,
-                "Chatbot can't read titles yet...",
-                text[pos:].split(' ')[0]
-            ],
-        ]
+        try:
+            status = requests.get(link).status_code
+        except requests.ConnectionError:
+            status = 404
 
-        body = {
-            'values': values
-        }
+        if status == 200:
+            ts = time.time()
+            st = datetime.datetime.fromtimestamp(ts).strftime('%Y/%m/%d %H:%M:%S')
+            print('('+ st + ') ' + full_name + '=> ' + link)
 
-        print(body)
+            values = [
+                [
+                    st,
+                    full_name,
+                    "Chatbot can't read titles yet...",
+                    link
+                ],
+            ]
 
-        result = service.spreadsheets().values().append(
-            spreadsheetId=os.getenv('SPREADSHEET_ID'), range=os.getenv('RANGE_NAME'),
-            valueInputOption='USER_ENTERED', body=body).execute()
+            body = {
+                'values': values
+            }
 
-        print('{0} cells appended.'.format(result \
-                                           .get('updates') \
-                                           .get('updatedCells')))
+            result = service.spreadsheets().values().append(
+                spreadsheetId=os.getenv('SPREADSHEET_ID'), range=os.getenv('RANGE_NAME'),
+                valueInputOption='USER_ENTERED', body=body).execute()
 
-        bot.send_message(chat_id=update.message.chat_id, text="Saving that for laterrr!")
+            print('{0} cells appended.'.format(result \
+                                               .get('updates') \
+                                               .get('updatedCells')))
+
+            bot.send_message(chat_id=update.message.chat_id, text="Saving that for laterrr!")
+
 
 def unknown(bot, update):
     update.message.reply_text("Existence is pain!")
