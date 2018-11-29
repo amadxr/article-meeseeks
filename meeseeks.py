@@ -36,7 +36,9 @@ def collect(bot, update):
         except requests.ConnectionError:
             status = 404
 
-        if status == 200:
+        ext = link.split('.')[-1]
+
+        if status == 200 and ext not in unwanted_extensions:
             ts = time.time()
             st = datetime.datetime.fromtimestamp(ts).strftime('%Y/%m/%d %H:%M:%S')
             print('('+ st + ') ' + full_name + ' => ' + link)
