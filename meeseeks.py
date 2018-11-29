@@ -39,7 +39,7 @@ def collect(bot, update):
         if status == 200:
             ts = time.time()
             st = datetime.datetime.fromtimestamp(ts).strftime('%Y/%m/%d %H:%M:%S')
-            print('('+ st + ') ' + full_name + '=> ' + link)
+            print('('+ st + ') ' + full_name + ' => ' + link)
 
             values = [
                 [
